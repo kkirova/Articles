@@ -19,8 +19,9 @@ app.use(bodyParser.urlencoded({
 
 app.set('view engine', 'hbs');
 
-router(app);
-
 app.use(express.static('./public'));
 
-app.listen(config.port, () => console.log(`Listening on port ${config.port}....`));
+router(app);
+
+app.listen(config.port,
+    () => console.log(`Listening on port ${config.port}...`));
