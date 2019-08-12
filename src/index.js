@@ -1,5 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.engine('hbs', handlebars({
@@ -7,7 +8,13 @@ app.engine('hbs', handlebars({
     extname: '.hbs'
 }));
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 app.set('view engine', 'hbs');
+
+
 app.use(express.static('./public'));
 
 app.get('/', (req, res) => {
@@ -16,6 +23,10 @@ app.get('/', (req, res) => {
 
 app.get('/articles/create', (req, res) => {
     res.render('articles/create');
+});
+
+app.post('/articles/create', (req, res) => {
+    console.log(req.body);
 });
 
 app.get('/articles', (req, res) => {
