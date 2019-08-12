@@ -10,6 +10,17 @@ app.engine('hbs', handlebars({
 app.set('view engine', 'hbs');
 app.use(express.static('./public'));
 
-app.get('/', (req, res) => res.render('home/index'));
+app.get('/', (req, res) => {
+    res.render('home/index');
+});
+
+app.get('/articles/create', (req, res) => {
+    res.render('articles/create');
+});
+
+app.get('/articles', (req, res) => {
+    res.render('articles/index');
+});
+
 
 app.listen(3000, () => console.log('Listening on port 3000....'));
