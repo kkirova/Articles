@@ -1,3 +1,5 @@
+const Article = require('../models/article');
+
 module.exports = {
 
     getCreate(req, res) {
@@ -5,7 +7,13 @@ module.exports = {
     },
 
     postCreate(req, res) {
-        console.log(req.body);
-        res.end();
+        let article = new Article({
+            title: req.body.title,
+            content: req.body.content,
+            author: req.body.author
+        });
+        article.save(function(err, bdArticle){
+            res.redirect('/articles');
+        });
     }
 };
