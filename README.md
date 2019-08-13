@@ -1,2 +1,2 @@
 # Articles
-A simple application
+A simple application for exercise. 
